@@ -12,8 +12,8 @@
 
 int		t_strlen(char *str)
 {
-	int len;
-	char c;
+	int		len;
+	char	c;
 
 	len = 0;
 	c = str[len];
@@ -22,5 +22,5 @@ int		t_strlen(char *str)
 		len++;
 		c = str[len];
 	}
-	return len;
+	return (len);
 }

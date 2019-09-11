@@ -17,6 +17,6 @@ void	ft_ultimate_div_mod(int *a, int *b)
 
 	aaux = *a;
 	baux = *b;
-	*a = aaux/baux;
-	*b = aaux%baux;
+	*a = aaux / baux;
+	*b = aaux % baux;
 }
