@@ -1,32 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_combn.c                                   :+:      :+:    :+:   */
+/*   ft_strcapitalize.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jgomez-b <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/10 14:07:53 by jgomez-b          #+#    #+#             */
-/*   Updated: 2019/09/10 14:07:58 by jgomez-b         ###   ########.fr       */
+/*   Created: 2019/09/11 14:58:38 by jgomez-b          #+#    #+#             */
+/*   Updated: 2019/09/11 14:58:41 by jgomez-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		ft_str_is_lowercase(char *str)
-{
-	int		i;
-	char	c;
-	int		valid;
+#include <stdio.h>
 
-	valid = 1;
+char	*ft_strcapitalize(char *str)
+{
+	int i;
+
 	i = 0;
-	c = str[i];
-	while (c != '\0' && valid)
+	while (str[i] != '\0')
 	{
-		if (c < 'a' || c > 'z')
+		if (str[i] >= 'a' && str[i] <= 'z')
 		{
-			valid = 0;
+			if (i > 0 &&
+			(str[i - 1] < 'A' ||
+			(str[i - 1] < 'a' && str[i - 1] > 'Z') ||
+			str[i - 1] > 'z'))
+			{
+				str[i] -= 32;
+			}
 		}
 		i++;
-		c = str[i];
 	}
-	return (valid);
+	return (str);
+}
+
+void main(){
+	char aux[] = "hola, ¿cómo estás? 42palabras cuarenta-y-dos; cincuenta+y+uno";
+	printf("%s", ft_strcapitalize(aux));
 }

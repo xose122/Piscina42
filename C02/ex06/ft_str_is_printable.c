@@ -12,9 +12,9 @@
 
 int		ft_str_is_uppercase(char *str)
 {
-	int i;
-	char c;
-	int valid;
+	int		i;
+	char	c;
+	int		valid;
 
 	valid = 1;
 	i = 0;

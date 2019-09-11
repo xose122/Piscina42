@@ -1,32 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_combn.c                                   :+:      :+:    :+:   */
+/*   ft_strupcase.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jgomez-b <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/10 14:07:53 by jgomez-b          #+#    #+#             */
-/*   Updated: 2019/09/10 14:07:58 by jgomez-b         ###   ########.fr       */
+/*   Created: 2019/09/11 13:50:11 by jgomez-b          #+#    #+#             */
+/*   Updated: 2019/09/11 13:50:17 by jgomez-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		ft_str_is_lowercase(char *str)
+char	*ft_strupcase(char *str)
 {
-	int		i;
-	char	c;
-	int		valid;
+	int i;
 
-	valid = 1;
 	i = 0;
-	c = str[i];
-	while (c != '\0' && valid)
+	while (str[i] != '\0')
 	{
-		if (c < 'a' || c > 'z')
+		if (str[i] >= 'a' && str[i] <= 'z')
 		{
-			valid = 0;
+			str[i] -= 32;
 		}
 		i++;
-		c = str[i];
 	}
-	return (valid);
+	return (str);
 }

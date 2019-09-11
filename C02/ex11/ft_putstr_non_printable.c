@@ -1,32 +1,53 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_combn.c                                   :+:      :+:    :+:   */
+/*   ft_putstr_non_printable.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jgomez-b <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/10 14:07:53 by jgomez-b          #+#    #+#             */
-/*   Updated: 2019/09/10 14:07:58 by jgomez-b         ###   ########.fr       */
+/*   Created: 2019/09/11 16:06:39 by jgomez-b          #+#    #+#             */
+/*   Updated: 2019/09/11 16:06:40 by jgomez-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		ft_str_is_lowercase(char *str)
+#include <unistd.h>
+
+void	ft_put_hex(char n)
+{
+	char	*hex;
+
+	hex = "0123456789abcdef";
+	if (n > 16)
+	{
+		ft_put_hex(n / 10);
+		ft_put_hex(n % 10);
+	}
+	else
+	{
+		write(1, &(hex[n]), 1);
+	}
+}
+
+void	ft_putstr_non_printable(char *str)
 {
 	int		i;
-	char	c;
-	int		valid;
 
-	valid = 1;
 	i = 0;
-	c = str[i];
-	while (c != '\0' && valid)
+	while (str[i] != '\0')
 	{
-		if (c < 'a' || c > 'z')
+		if (str[i] < 32 || str[i] == 127)
 		{
-			valid = 0;
+			write(1, "\\", 1);
+			if (str[i] < 16)
+			{
+				write(1, "0", 1);
+			}
+			ft_put_hex(str[i]);
+		}
+		else
+		{
+			write(1, &(str[i]), 1);
 		}
 		i++;
-		c = str[i];
 	}
-	return (valid);
 }

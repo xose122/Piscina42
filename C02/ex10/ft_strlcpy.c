@@ -1,32 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_combn.c                                   :+:      :+:    :+:   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jgomez-b <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/10 14:07:53 by jgomez-b          #+#    #+#             */
-/*   Updated: 2019/09/10 14:07:58 by jgomez-b         ###   ########.fr       */
+/*   Created: 2019/09/11 15:20:21 by jgomez-b          #+#    #+#             */
+/*   Updated: 2019/09/11 15:20:25 by jgomez-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		ft_str_is_lowercase(char *str)
+unsigned int	ft_strlcpy(char *dest, char *src, unsigned int size)
 {
-	int		i;
-	char	c;
-	int		valid;
+	unsigned	int dest_size;
+	unsigned	int i;
 
-	valid = 1;
-	i = 0;
-	c = str[i];
-	while (c != '\0' && valid)
+	dest_size = 0;
+	while (dest[dest_size] != '\0')
 	{
-		if (c < 'a' || c > 'z')
-		{
-			valid = 0;
-		}
-		i++;
-		c = str[i];
+		dest_size++;
 	}
-	return (valid);
+	i = 0;
+	while (src[i] != '\0' && i < size)
+	{
+		dest[i + dest_size] = src[i];
+		i++;
+	}
+	dest[i + dest_size] = '\0';
+	i = 0;
+	while (src[i])
+	{
+		i++;
+	}
+
+	return (i);
 }

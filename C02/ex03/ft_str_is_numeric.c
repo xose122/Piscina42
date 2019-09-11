@@ -10,18 +10,18 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-int ft_str_is_numeric(char *str)
+int		ft_str_is_numeric(char *str)
 {
-	int i;
-	char c;
-	int valid;
+	int		i;
+	char	c;
+	int		valid;
 
 	valid = 1;
 	i = 0;
 	c = str[i];
 	while (c != '\0' && valid)
 	{
-		if (c < 48 || c > 57)
+		if (c < '0' || c > '9')
 		{
 			valid = 0;
 		}

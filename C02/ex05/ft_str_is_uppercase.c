@@ -12,16 +12,16 @@
 
 int		ft_str_is_uppercase(char *str)
 {
-	int i;
-	char c;
-	int valid;
+	int		i;
+	char	c;
+	int		valid;
 
 	valid = 1;
 	i = 0;
 	c = str[i];
 	while (c != '\0' && valid)
 	{
-		if (c < 65 || c > 90)
+		if (c < 'A' || c > 'Z')
 		{
 			valid = 0;
 		}
