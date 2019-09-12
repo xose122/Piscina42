@@ -1,39 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr.c                                        :+:      :+:    :+:   */
+/*   ft_putstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jgomez-b <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/06 14:22:40 by jgomez-b          #+#    #+#             */
-/*   Updated: 2019/09/06 14:22:48 by jgomez-b         ###   ########.fr       */
+/*   Created: 2019/09/12 16:00:05 by jgomez-b          #+#    #+#             */
+/*   Updated: 2019/09/12 16:00:07 by jgomez-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
-void	ft_printn(int n)
+void	ft_putstr(char *str)
 {
-	char *str;
+	int i;
 
-	str = "0123456789";
-	write(1, &str[n], 1);
-}
-
-void	ft_putnbr(int nb)
-{
-	if (nb < 0)
+	i = 0;
+	while (str[i] != '\0')
 	{
-		write(1, "-", 1);
-		ft_putnbr(-nb);
-	}
-	else if (nb < 10)
-	{
-		ft_printn(nb);
-	}
-	else
-	{
-		ft_putnbr(nb / 10);
-		ft_putnbr(nb % 10);
+		write(1, &str[i], 1);
+		i++;
 	}
 }

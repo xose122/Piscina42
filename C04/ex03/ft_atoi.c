@@ -1,39 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr.c                                        :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jgomez-b <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/06 14:22:40 by jgomez-b          #+#    #+#             */
-/*   Updated: 2019/09/06 14:22:48 by jgomez-b         ###   ########.fr       */
+/*   Created: 2019/09/12 16:33:28 by jgomez-b          #+#    #+#             */
+/*   Updated: 2019/09/12 16:33:31 by jgomez-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-
-void	ft_printn(int n)
+int		ft_atoi(char *str)
 {
-	char *str;
+	int i;
+	int mult;
+	int result;
 
-	str = "0123456789";
-	write(1, &str[n], 1);
-}
-
-void	ft_putnbr(int nb)
-{
-	if (nb < 0)
+	result = 0;
+	mult = 1;
+	i = 0;
+	while (str[i] != '\0' && (str[i] == ' ' || str[i] == '\n' ||
+	str[i] == '\t' || str[i] == '\v' || str[i] == '\f' || str[i] == '\r'))
 	{
-		write(1, "-", 1);
-		ft_putnbr(-nb);
+		i++;
 	}
-	else if (nb < 10)
+	while (str[i] == '-' || str[i] == '+')
 	{
-		ft_printn(nb);
+		if (str[i] == '-')
+			mult *= -1;
+		i++;
 	}
-	else
+	while (str[i] > '0' && str[i] < '9')
 	{
-		ft_putnbr(nb / 10);
-		ft_putnbr(nb % 10);
+		result = result * 10 + (str[i] - 48);
+		i++;
 	}
+	return (result * mult);
 }
