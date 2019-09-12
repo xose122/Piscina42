@@ -1,56 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_comb.c                                    :+:      :+:    :+:   */
+/*   ft_strstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jgomez-b <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/06 12:20:46 by jgomez-b          #+#    #+#             */
-/*   Updated: 2019/09/06 12:20:49 by jgomez-b         ###   ########.fr       */
+/*   Created: 2019/09/12 13:27:20 by jgomez-b          #+#    #+#             */
+/*   Updated: 2019/09/12 13:27:22 by jgomez-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-
-void	ft_print_number(int i, int j, int k)
-{
-	char comma;
-	char space;
-	char *str;
-
-	comma = ',';
-	space = ' ';
-	str = "0123456789";
-	write(1, &str[i], 1);
-	write(1, &str[j], 1);
-	write(1, &str[k], 1);
-	if (!(i == 7 && j == 8 && k == 9))
-	{
-		write(1, &comma, 1);
-		write(1, &space, 1);
-	}
-}
-
-void	ft_print_comb(void)
+char	*ft_strstr(char *str, char *to_find)
 {
 	int i;
 	int j;
-	int k;
 
 	i = 0;
-	while (i <= 7)
+	while (str[i] != '\0')
 	{
-		j = i + 1;
-		while (j <= 8)
+		j = 0;
+		while (to_find[j] == str[i + j])
 		{
-			k = j + 1;
-			while (k <= 9)
+			if (to_find[j + 1] == '\0')
 			{
-				ft_print_number(i, j, k);
-				k++;
+				return (str[i]);
 			}
 			j++;
 		}
 		i++;
 	}
+	return (0);
 }

@@ -96,3 +96,7 @@ void	ft_print_combn(int n)
 	}
 	ft_rec_comb(n, nb, 0);
 }
+
+int main(){
+	ft_print_combn(9);
+}

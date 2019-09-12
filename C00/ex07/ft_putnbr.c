@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include <unistd.h>
-#include <stdio.h>
 
 int		ft_abs(int n)
 {
@@ -52,7 +51,6 @@ void	ft_putnbr(int nb)
 {
 	int		cont;
 	int		n[ft_get_n_digits(nb)];
-	char	c;
 
 	cont = 0;
 	while (nb > 9 || nb < -9)

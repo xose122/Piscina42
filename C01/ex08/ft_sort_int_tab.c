@@ -10,6 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdio.h>
+
 void	ft_swap(int *a, int *b)
 {
 	int aux;
@@ -55,5 +57,5 @@ void	quick_sort(int arr[], int low, int high)
 
 void	ft_sort_int_tab(int *tab, int size)
 {
-	quickSort(tab, 0, size);
+	quick_sort(tab, 0, size);
 }

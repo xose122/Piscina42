@@ -44,8 +44,7 @@ void	ft_generate_second_number(int d00, int d01)
 	if (d01 < 9)
 	{
 		d11 = d01 + 1;
-		d10 = d00
-	;
+		d10 = d00;
 	}
 	else
 	{
@@ -80,4 +79,9 @@ void	ft_print_comb2(void)
 		}
 		d00++;
 	}
+}
+
+int main()
+{
+	ft_print_comb2();
 }

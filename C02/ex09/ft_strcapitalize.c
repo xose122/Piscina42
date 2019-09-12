@@ -33,8 +33,3 @@ char	*ft_strcapitalize(char *str)
 	}
 	return (str);
 }
-
-void main(){
-	char aux[] = "hola, ¿cómo estás? 42palabras cuarenta-y-dos; cincuenta+y+uno";
-	printf("%s", ft_strcapitalize(aux));
-}
