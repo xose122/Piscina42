@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcat.c                                       :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jgomez-b <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/12 14:37:42 by jgomez-b          #+#    #+#             */
-/*   Updated: 2019/09/12 14:37:46 by jgomez-b         ###   ########.fr       */
+/*   Created: 2019/09/12 15:17:28 by jgomez-b          #+#    #+#             */
+/*   Updated: 2019/09/12 15:17:31 by jgomez-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int				ft_strlen(char *str)
+int		ft_strlen(char *str)
 {
 	int		len;
 	char	c;
@@ -23,27 +23,4 @@ int				ft_strlen(char *str)
 		c = str[len];
 	}
 	return (len);
-}
-
-unsigned int	ft_strlcat(char *dest, char *src, unsigned int size)
-{
-	int		i;
-	int		dstlength;
-	int		srclength;
-
-	i = 0;
-	dstlength = ft_strlen(dest);
-	srclength = ft_strlen(src);
-	if (size <= dstlength)
-		return (srclength + size);
-	while ((dest[i] != '\0') && i < (size - 1))
-		i++;
-	while (*src && i < (size - 1))
-	{
-		dest[i] = *src;
-		i++;
-		src++;
-	}
-	dest[i] = '\0';
-	return (dstlength + srclength);
 }
