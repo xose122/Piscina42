@@ -1,16 +1,15 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_atoi_base.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jgomez-b <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/12 18:46:28 by jgomez-b          #+#    #+#             */
-/*   Updated: 2019/09/12 18:46:31 by jgomez-b         ###   ########.fr       */
+/*   Created: 2019/09/13 10:54:18 by jgomez-b          #+#    #+#             */
+/*   Updated: 2019/09/13 10:54:20 by jgomez-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
 #include <stdio.h>
 
 int		ft_strlen(char *str)
@@ -69,31 +68,31 @@ int		ft_valid_base(char *base)
 	return (valid);
 }
 
-void	ft_rec_putnbr_base(int nbr, char *base)
+int		ft_atoi_base(char *str, char *base)
 {
-	int size;
+	int i;
+	int mult;
+	int result;
+	int pos;
 
-	size = ft_strlen(base);
-	if (nbr < 0)
+	if (!ft_valid_base(base))
+		return (0);
+	result = 0;
+	mult = 1;
+	i = 0;
+	while (str[i] != '\0' && (str[i] == ' ' || str[i] == '\n' ||
+	str[i] == '\t' || str[i] == '\v' || str[i] == '\f' || str[i] == '\r'))
+		i++;
+	while (str[i] == '-' || str[i] == '+')
 	{
-		write(1, "-", 1);
-		ft_rec_putnbr_base(-nbr, base);
+		if (str[i] == '-')
+			mult *= -1;
+		i++;
 	}
-	else if (nbr < size)
+	while ((pos = ft_contains(base, str[i], 0)) != -1)
 	{
-		write(1, &(base[nbr]), 1);
+		result = result * ft_strlen(base) + pos;
+		i++;
 	}
-	else
-	{
-		ft_rec_putnbr_base(nbr / size, base);
-		ft_rec_putnbr_base(nbr % size, base);
-	}
-}
-
-void	ft_putnbr_base(int nbr, char *base)
-{
-	if (ft_valid_base(base))
-	{
-		ft_rec_putnbr_base(nbr, base);
-	}
+	return (result * mult);
 }
