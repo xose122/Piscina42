@@ -18,7 +18,7 @@ int		word_size(char *str, int start, int *end)
 	int i;
 
 	i = start;
-	while (str[i] != ' ' || str[i] != '\0'){
+	while (str[i] != '\0' && str[i] != ' '){
 		i++;
 	}
 	*end = i;
@@ -50,13 +50,12 @@ int		n_words(char *str)
 char	*get_word(char *str, int start, int word_size){
 	int 	i;
 	char	*ret;
-	int 	j;
 
 	ret = (char*)malloc(word_size*sizeof(char)); 
-	i = start;
+	i = 0;
 	while (i < word_size)
 	{
-		ret[i - start] = str[start];
+		ret[i] = str[start + i];
 		i++;
 	}
 	return (ret);
@@ -77,9 +76,10 @@ char	**ft_split(char *str, int *n_str)
 	i = 0;
 	while (i < n)
 	{
+		//printf("start: %d ws: %d \n", start, word_size(str, start, &end));
 		splitret[i] = get_word(str, start, word_size(str, start, &end));
 		*n_str = *n_str + 1;
-		start = end;
+		start = end + 1;
 		i++;
 	}
 	return (splitret);

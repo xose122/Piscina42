@@ -10,4 +10,59 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+int		valid_cardinal_point(int i, int **mat)
+{
+	int j;
+	int valid;
 
+	valid = 1;
+	j = 0;
+	if (i / 4 == 0)
+	{
+		while (valid && j < conditions[i])
+		{
+			if(mat[i%4][j] >= mat[i%4][j+1])
+				valid = 0;
+			j++;
+		}
+	}
+	else if (i / 4 == 1)
+	{
+		while (valid && j < conditions[i])
+		{
+			if(mat[i%4][3-j] >= mat[i%4][3-j-1])
+				valid = 0;
+			j++;
+		}
+	}
+}
+
+int		valid_pos(int *conditions, int **mat)
+{
+	int i;
+	int j;
+	int valid;
+
+	valid = 1;
+	i = 0;
+	while(valid && i < 16)
+	{
+		j = 0;
+		if(i / 4 == 0)
+		{
+			while(valid && j < conditions[i] - 1)
+			{
+				if(mat[i%4][j] >= mat[i%4][j+1])
+					valid = 0;
+			}
+		}
+	}
+}
+
+void	ft_rec_allcomb(int *conditions, int **mat, int fila, int column)
+{
+	if(fila < 4)
+	{
+
+	}
+}
