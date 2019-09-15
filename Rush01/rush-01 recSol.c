@@ -38,7 +38,6 @@ int		valid_cardinal_point(int i, int condition, int **mat)
 int		valid_pos(int *conditions, int **mat)
 {
 	int i;
-	int j;
 	int valid;
 
 	valid = 1;
@@ -48,6 +47,7 @@ int		valid_pos(int *conditions, int **mat)
 		valid = valid_cardinal_point(i, conditions[i], mat);
 		i++;
 	}
+	return (valid);
 }
 
 void	print_arr(int **mat)
