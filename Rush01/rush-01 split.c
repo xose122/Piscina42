@@ -76,7 +76,6 @@ char	**ft_split(char *str, int *n_str)
 	i = 0;
 	while (i < n)
 	{
-		//printf("start: %d ws: %d \n", start, word_size(str, start, &end));
 		splitret[i] = get_word(str, start, word_size(str, start, &end));
 		*n_str = *n_str + 1;
 		start = end + 1;

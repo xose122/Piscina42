@@ -14,6 +14,7 @@
 #include <stdio.h>
 
 char	**ft_split(char *str, int *n_str);
+void	ft_rec_allcomb(int *conditions, int **mat, int fila, int column);
 
 int		ft_atoi(char *str)
 {
@@ -45,16 +46,22 @@ int		ft_atoi(char *str)
 
 int		main(int argc, char **argv)
 {
-	/*col1up col2up col3up col4up col1down col2down col3down col4down row1left row2left row3left row4left row1right row2right row3right row4right"	*/
-	/*	0      1      2      3       4        5        6        7       8         9        10       11       12         13       14        15    	*/
 	int i;
 	int nparameters;
 	int *bordes;
 	char **strsplitted;
+	int **mat;
 
 	if(argc > 1)
 	{
 		bordes = malloc(sizeof(int) * 16);
+		mat = (int **)malloc(4 * sizeof(int *));
+		i = 0;
+    	while(i < 4)
+    	{
+        	mat[i] = (int *)malloc(4 * sizeof(int));
+        	i++;
+    	}
 		i = 0;
 		nparameters = 0;
 		strsplitted = ft_split(argv[1], &nparameters);
@@ -63,10 +70,6 @@ int		main(int argc, char **argv)
 			bordes[i] = ft_atoi(strsplitted[i]);
 			i++;
 		}
-		i = 0;
-		while (i < nparameters){
-			printf("%d, ", bordes[i]);
-			i++;
-		}
+		ft_rec_allcomb(bordes, mat, 3, 3);
 	}
 }
