@@ -27,8 +27,8 @@ int		ft_strlen(char *str)
 
 char	*ft_strncat(char *dest, char *src, unsigned int nb)
 {
-	int	dest_len;
-	int i;
+	int				dest_len;
+	unsigned int	i;
 
 	dest_len = ft_strlen(dest);
 	i = 0;

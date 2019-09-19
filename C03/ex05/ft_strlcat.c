@@ -10,6 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdio.h>
+
 int				ft_strlen(char *str)
 {
 	int		len;
@@ -27,9 +29,9 @@ int				ft_strlen(char *str)
 
 unsigned int	ft_strlcat(char *dest, char *src, unsigned int size)
 {
-	int		i;
-	int		dstlength;
-	int		srclength;
+	unsigned int	i;
+	unsigned int	dstlength;
+	unsigned int	srclength;
 
 	i = 0;
 	dstlength = ft_strlen(dest);

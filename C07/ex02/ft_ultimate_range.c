@@ -1,35 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strstr.c                                        :+:      :+:    :+:   */
+/*   ft_ultimate_range.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jgomez-b <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/12 13:27:20 by jgomez-b          #+#    #+#             */
-/*   Updated: 2019/09/12 13:27:22 by jgomez-b         ###   ########.fr       */
+/*   Created: 2019/09/19 12:36:58 by jgomez-b          #+#    #+#             */
+/*   Updated: 2019/09/19 12:37:00 by jgomez-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
+#include <stdlib.h>
 
-char	*ft_strstr(char *str, char *to_find)
+int		ft_ultimate_range(int **range, int min, int max)
 {
-	int i;
-	int j;
+	int size;
+	int	i;
+	int	*arr;
 
-	i = 0;
-	while (str[i] != '\0')
+	if (min >= max)
 	{
-		j = 0;
-		while (to_find[j] == str[i + j])
-		{
-			if (to_find[j + 1] == '\0')
-			{
-				return (&(str[i]));
-			}
-			j++;
-		}
+		range = NULL;
+		return (0);
+	}
+	size = max - min;
+	if (!(arr = (int*)malloc(sizeof(int) * size)))
+		return (-1);
+	i = min;
+	while (i < max)
+	{
+		arr[i - min] = i;
 		i++;
 	}
-	return (0);
+	*range = arr;
+	return (size);
 }

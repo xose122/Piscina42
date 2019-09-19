@@ -12,15 +12,15 @@
 
 #include <unistd.h>
 
-void	ft_put_hex(char n)
+void	ft_put_hex(int n)
 {
 	char	*hex;
 
 	hex = "0123456789abcdef";
 	if (n > 16)
 	{
-		ft_put_hex(n / 10);
-		ft_put_hex(n % 10);
+		ft_put_hex(n / 16);
+		ft_put_hex(n % 16);
 	}
 	else
 	{

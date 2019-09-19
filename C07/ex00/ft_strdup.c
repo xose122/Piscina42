@@ -1,35 +1,53 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strstr.c                                        :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jgomez-b <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/12 13:27:20 by jgomez-b          #+#    #+#             */
-/*   Updated: 2019/09/12 13:27:22 by jgomez-b         ###   ########.fr       */
+/*   Created: 2019/09/19 11:59:49 by jgomez-b          #+#    #+#             */
+/*   Updated: 2019/09/19 11:59:53 by jgomez-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdlib.h>
 #include <stdio.h>
 
-char	*ft_strstr(char *str, char *to_find)
+int		ft_strlen(char *str)
+{
+	int		len;
+
+	len = 0;
+	while (str[len] != '\0')
+	{
+		len++;
+	}
+	return (len);
+}
+
+char	*ft_strcpy(char *dest, char *src)
 {
 	int i;
-	int j;
 
 	i = 0;
-	while (str[i] != '\0')
+	while (src[i] != '\0')
 	{
-		j = 0;
-		while (to_find[j] == str[i + j])
-		{
-			if (to_find[j + 1] == '\0')
-			{
-				return (&(str[i]));
-			}
-			j++;
-		}
+		dest[i] = src[i];
 		i++;
 	}
-	return (0);
+	dest[i] = '\0';
+	return (dest);
+}
+
+char	*ft_strdup(char *src)
+{
+	int		size;
+	int		i;
+	char	*new;
+
+	size = ft_strlen(src);
+	if (!(new = malloc(sizeof(char) * (ft_strlen(src) + 1))))
+		return (NULL);
+	ft_strcpy(new, src);
+	return (new);
 }
