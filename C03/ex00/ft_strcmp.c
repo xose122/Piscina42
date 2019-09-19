@@ -10,8 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-
 int		ft_strcmp(char *s1, char *s2)
 {
 	char	c1;
@@ -28,9 +26,4 @@ int		ft_strcmp(char *s1, char *s2)
 		c2 = s2[i];
 	}
 	return (s1[i] - s2[i]);
-}
-
-int main()
-{
-	printf("%d\n", ft_strcmp("csd", "b"));
 }

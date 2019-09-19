@@ -83,7 +83,6 @@ int		ft_ten_queens_puzzle(void)
 {
 	int reinas[10];
 	int i;
-	int n;
 
 	i = 0;
 	while (i < 10)
