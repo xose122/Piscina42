@@ -24,8 +24,8 @@ int		ft_abs(int n)
 
 void	ft_pintar_arr(int *reinas, int n)
 {
-	int i;
-	char c;
+	int		i;
+	char	c;
 
 	i = 0;
 	while (i < n)
@@ -92,8 +92,4 @@ int		ft_ten_queens_puzzle(void)
 		i++;
 	}
 	return (724);
-}
-
-int main(){
-	printf("%d", ft_ten_queens_puzzle());
 }

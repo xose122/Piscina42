@@ -16,11 +16,9 @@ int		ft_strncmp(char *s1, char *s2, unsigned int n)
 {
 	char	c1;
 	char	c2;
-	int		iguales;
 	int		i;
 
 	i = 0;
-	iguales = 1;
 	c1 = s1[i];
 	c2 = s2[i];
 	while (c1 == c2 && c1 != '\0' && c2 != '\0' && i < n - 1)
