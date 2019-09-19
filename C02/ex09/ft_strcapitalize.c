@@ -10,6 +10,30 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+int		ft_c_is_numeric(char c)
+{
+	int		valid;
+
+	valid = 1;
+	if (c < '0' || c > '9')
+	{
+		valid = 0;
+	}
+	return (valid);
+}
+
+int		ft_c_is_alpha(char c)
+{
+	int		valid;
+
+	valid = 1;
+	if (c < 'A' || (c < 'a' && c > 'Z') || c > 'z')
+	{
+		valid = 0;
+	}
+	return (valid);
+}
+
 char	*ft_strcapitalize(char *str)
 {
 	int i;
@@ -19,17 +43,16 @@ char	*ft_strcapitalize(char *str)
 	{
 		if (str[i] >= 'a' && str[i] <= 'z')
 		{
-			if (i == 0 || (str[i - 1] < 'A' ||
-			(str[i - 1] < 'a' && str[i - 1] > 'Z') || str[i - 1] > 'z'))
+			if (i == 0 || !(ft_c_is_alpha(str[i - 1]) ||
+			ft_c_is_numeric(str[i - 1])))
 			{
 				str[i] -= 32;
 			}
 		}
 		else if (str[i] >= 'A' && str[i] <= 'Z')
 		{
-			if ((i > 0) && ((str[i - 1] >= 'A' && str[i - 1] <= 'Z') ||
-			(str[i - 1] >= 'a' && str[i - 1] <= 'z') ||
-			(str[i - 1] >= '0' && str[i - 1] <= '9')))
+			if (i > 0 && (ft_c_is_alpha(str[i - 1]) ||
+			ft_c_is_numeric(str[i - 1])))
 			{
 				str[i] += 32;
 			}
