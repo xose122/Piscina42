@@ -10,30 +10,24 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-int		ft_recursive_power(int nb, int power)
-{
-	if (power == 0)
-	{
-		return (1);
-	}
-	else if (power > 0)
-	{
-		return (nb * ft_recursive_power(nb, power - 1));
-	}
-	else
-	{
-		return (0);
-	}
-}
+#include <stdio.h>
 
 int		ft_sqrt(int nb)
 {
 	int i;
 
 	i = 1;
-	while (i < nb)
+	if (nb == 1)
 	{
-		if (ft_recursive_power(i, 2) == nb)
+		return (1);
+	}
+	else if (nb == 4)
+	{
+		return (2);
+	}
+	while (i < nb / 2)
+	{
+		if (i * i == nb)
 		{
 			return (i);
 		}
