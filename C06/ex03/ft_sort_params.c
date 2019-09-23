@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_sort_params.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jgomez-b <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/09/23 13:17:15 by jgomez-b          #+#    #+#             */
+/*   Updated: 2019/09/23 13:17:16 by jgomez-b         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <unistd.h>
 
 void	ft_ptint_str(char *str)
@@ -22,7 +34,7 @@ void	ft_swap(char **a, char **b)
 	*b = aux;
 }
 
-int	ft_strcmp(char *s1, char *s2)
+int		ft_strcmp(char *s1, char *s2)
 {
 	int i;
 
@@ -32,8 +44,8 @@ int	ft_strcmp(char *s1, char *s2)
 	return (s1[i] - s2[i]);
 }
 
-void	bubbleSort(char **arr, int n) 
-{ 
+void	bubble_sort(char **arr, int n)
+{
 	int i;
 	int j;
 
@@ -64,9 +76,10 @@ int		main(int argc, char **argv)
 		i++;
 	}
 	argc--;
-	bubbleSort(argv, argc);
+	bubble_sort(argv, argc);
 	i = 0;
-	while (i < argc){
+	while (i < argc)
+	{
 		ft_ptint_str(argv[i]);
 		i++;
 	}

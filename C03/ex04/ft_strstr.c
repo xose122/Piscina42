@@ -38,7 +38,7 @@ char	*ft_strstr(char *str, char *to_find)
 int main()
 {
 	char *X = "Hola que tal - 42 Madrid";
-	char *Y = "42";
+	char *Y = "Madrid";
 
 	printf("%s\n", ft_strstr(X, Y));
 

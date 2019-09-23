@@ -74,7 +74,12 @@ void	ft_rec_putnbr_base(int nbr, char *base)
 	int size;
 
 	size = ft_strlen(base);
-	if (nbr < 0)
+	if (nbr == -2147483648)
+	{
+		ft_rec_putnbr_base(nbr / 10, base);
+		write(1, &(base[8]), 1);
+	}
+	else if (nbr < 0)
 	{
 		write(1, "-", 1);
 		ft_rec_putnbr_base(-nbr, base);
@@ -96,4 +101,9 @@ void	ft_putnbr_base(int nbr, char *base)
 	{
 		ft_rec_putnbr_base(nbr, base);
 	}
+}
+
+int main()
+{
+	ft_putnbr_base(-2147483648, "0123456789");
 }

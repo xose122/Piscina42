@@ -1,31 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_program_name.c                            :+:      :+:    :+:   */
+/*   ft_stock_str.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jgomez-b <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/23 13:18:39 by jgomez-b          #+#    #+#             */
-/*   Updated: 2019/09/23 13:18:43 by jgomez-b         ###   ########.fr       */
+/*   Created: 2019/09/23 14:05:05 by jgomez-b          #+#    #+#             */
+/*   Updated: 2019/09/23 14:05:06 by jgomez-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#ifndef S_STOCK_STR
+# define S_STOCK_STR
 
-void	ft_ptint_str(char *str)
+typedef struct	s_stock_str
 {
-	int i;
-
-	i = 0;
-	while (str[i] != '\0')
-	{
-		write(1, &(str[i]), 1);
-		i++;
-	}
-	write(1, "\n", 1);
-}
-
-int		main(int argc, char **argv)
-{
-	ft_ptint_str(argv[0]);
-}
+	int size;
+	char *str;
+	char *copy;
+}				t_stock_str;
+#endif
