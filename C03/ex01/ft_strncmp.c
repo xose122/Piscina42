@@ -10,20 +10,29 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdio.h>
+#include <string.h>
+
 int		ft_strncmp(char *s1, char *s2, unsigned int n)
 {
-	char			c1;
-	char			c2;
-	unsigned int	i;
-
-	i = 0;
-	c1 = s1[i];
-	c2 = s2[i];
-	while (c1 == c2 && c1 != '\0' && c2 != '\0' && i < n - 1)
+	while (n && *s1 && (*s1 == *s2))
 	{
-		i++;
-		c1 = s1[i];
-		c2 = s2[i];
+		++s1;
+		++s2;
+		--n;
 	}
-	return (s1[i] - s2[i]);
+	if (n == 0)
+	{
+		return (0);
+	}
+	else
+	{
+		return (*(unsigned char *)s1 - *(unsigned char *)s2);
+	}
+}
+
+int main()
+{
+	printf("%d\n",ft_strncmp("aaa", "aab", 3));
+	printf("%d\n",strncmp("aaa", "aab", 3));
 }
