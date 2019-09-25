@@ -1,8 +1,8 @@
 HEADERS = header/ft_lib.h
-OBJECTS = src/main.o src/parse_file.o src/split.o src/map_check.o src/stdin_read.o
+OBJECTS = src/main.o src/parse_file.o src/split.o
 NAME = BSQ
 
-$(NAME): program cleano
+$(NAME): program cleano rename
 
 %.o: %.c $(HEADERS)
 	gcc -Wall -Wextra -Werror -c $< -o $@
@@ -16,3 +16,6 @@ clean:
 
 cleano:
 	-rm -f $(OBJECTS)
+
+rename:
+	mv program $(NAME)

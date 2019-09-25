@@ -122,19 +122,21 @@ int		main(int argc, char **argv)
 	int		**tab;
 	int		*borders;
 	char	*cset;
+	char	*str;
+	int 	i;
 
 	if (argc > 1)
 	{
-		borders = (int*)malloc(2 * sizeof(int));
-		tab = parse_file(argv[1], &borders[1], &borders[0], &cset);
-		ft_calc_max_cuad(tab, borders, cset);
-	}
-	else if (argc == 1)
-	{
-		borders = (int*)malloc(2 * sizeof(int));
-		printf("%s\n", ft_read(0, 10000));
-		//tab = parse_file(ft_read(0, 10000), &borders[1], &borders[0], &cset);
-		//ft_calc_max_cuad(tab, borders, cset);
+		i = 1;
+		while (i < argc)
+		{
+			borders = (int*)malloc(2 * sizeof(int));
+			tab = parse_file(argv[i], &borders[1], &borders[0], &cset);
+			ft_calc_max_cuad(tab, borders, cset);
+			if(i != argc - 1)
+				write(1, "\n", 1);
+			i++;
+		}
 	}
 	return (0);
 }
