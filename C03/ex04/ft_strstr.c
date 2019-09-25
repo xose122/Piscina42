@@ -12,35 +12,28 @@
 
 #include <stdio.h>
 
-int		compare(const char *str, const char *to_find)
-{
-	while (*str && *to_find)
-	{
-		if (*str != *to_find)
-			return (0);
-		str++;
-		to_find++;
-	}
-	return (*to_find == '\0');
-}
-
 char	*ft_strstr(char *str, char *to_find)
 {
-	while (*str != '\0')
+	int i;
+	int j;
+
+	i = 0;
+	if (to_find[0] == '\0')
 	{
-		if (compare(str, to_find))
-			return (str);
-		str++;
+		return (str);
 	}
-	return (NULL);
-}
-
-int main()
-{
-	char *X = "Hola que tal - 42 Madrid";
-	char *Y = "Madrid";
-
-	printf("%s\n", ft_strstr(X, Y));
-
-	return 0;
+	while (str[i] != '\0')
+	{
+		j = 0;
+		while (to_find[j] == str[i + j])
+		{
+			if (to_find[j + 1] == '\0')
+			{
+				return (&(str[i]));
+			}
+			j++;
+		}
+		i++;
+	}
+	return (0);
 }

@@ -102,8 +102,3 @@ void	ft_putnbr_base(int nbr, char *base)
 		ft_rec_putnbr_base(nbr, base);
 	}
 }
-
-int main()
-{
-	ft_putnbr_base(-2147483648, "0123456789");
-}

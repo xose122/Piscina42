@@ -1,10 +1,11 @@
-HEADERS = ft_lib.h
-OBJECTS = main.o parse_file.o split.o
+HEADERS = header/ft_lib.h
+OBJECTS = src/main.o src/parse_file.o src/split.o src/map_check.o src/stdin_read.o
+NAME = BSQ
 
-default: program cleano
+$(NAME): program cleano
 
 %.o: %.c $(HEADERS)
-	gcc -c $< -o $@
+	gcc -Wall -Wextra -Werror -c $< -o $@
 
 program: $(OBJECTS)
 	gcc $(OBJECTS) -o $@

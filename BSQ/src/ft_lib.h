@@ -18,8 +18,13 @@ typedef	struct	s_point
 {
 	int i;
 	int j;
-    int value;
+	int value;
 }				t_point;
-int		**parse_file(char *pathname, int *ncol, int *nrow, char **cset);
-char	**ft_split(char *str, int *n_str, char sep);
+
+int				**parse_file(char *pathname, int *ncol, int *nrow, char **cset);
+char			**ft_split(char *str, int *n_str, char sep);
+int				valid_map(char **map, int *borders);
+char			*ft_read(int fd, int buff_size);
+int				ft_strlen(char *str);
+
 #endif

@@ -35,7 +35,8 @@ int		ft_atoi(char *str)
 	}
 	while (str[i] > '0' && str[i] < '9')
 	{
-		result = result * 10 + (str[i] - 48);
+		result *= 10;
+		result += (str[i] - 48);
 		i++;
 	}
 	return (result * mult);

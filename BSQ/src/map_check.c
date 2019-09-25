@@ -1,32 +1,45 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncmp.c                                       :+:      :+:    :+:   */
+/*   map_check.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jgomez-b <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/12 12:27:02 by jgomez-b          #+#    #+#             */
-/*   Updated: 2019/09/12 12:27:06 by jgomez-b         ###   ########.fr       */
+/*   Created: 2019/09/25 11:20:54 by jgomez-b          #+#    #+#             */
+/*   Updated: 2019/09/25 11:20:55 by jgomez-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <string.h>
+#include "ft_lib.h"
+#include <unistd.h>
 
-int		ft_strncmp(char *s1, char *s2, unsigned int n)
+int		same_length(char **map, int *borders)
 {
-	while (n && *s1 && (*s1 == *s2))
+	int i;
+	int ret;
+	int len;
+
+	i = 1;
+	ret = 1;
+	len = ft_strlen(map[0]);
+	while (ret && i < borders[0])
 	{
-		++s1;
-		++s2;
-		--n;
+		if (ft_strlen(map[i]) == len)
+			len = ft_strlen(map[i]);
+		else
+			ret = 0;
+		i++;
 	}
-	if (n == 0)
-	{
-		return (0);
-	}
+	return (ret);
+}
+
+int		valid_map(char **map, int *borders)
+{
+
+	if (same_length(map, borders))
+		write(1, "Y", 1);
 	else
-	{
-		return (*(unsigned char *)s1 - *(unsigned char *)s2);
-	}
+		write(1, "N", 1);
+
+	return (0);
 }

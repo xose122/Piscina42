@@ -73,7 +73,7 @@ int		**merge(char *buffer, int *ncol, int *nrow, char **cset)
 	tab = (int**)malloc(sizeof(int*) * (strc - 1));
 	*cset = (char*)malloc(sizeof(char) * 3);
 	*nrow = strc - 1;
-	*ncol = ft_strlen(str_spl[2]); //Esto tengo que arreglarlo...
+	*ncol = ft_strlen(str_spl[2]);
 	while (i < 3)
 	{
 		(*cset)[i] = str_spl[0][ft_ndigit(*nrow) + i];
@@ -99,7 +99,6 @@ int		**parse_file(char *pathname, int *ncol, int *nrow, char **cset)
 	fd = open(pathname, O_RDONLY);
 	sz = read(fd, strin, 10000);
 	strin[sz] = '\0';
-	printf("%s\n", strin);
 	ret = merge(strin, ncol, nrow, cset);
 	return (ret);
 }

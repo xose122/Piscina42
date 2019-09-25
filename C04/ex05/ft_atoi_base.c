@@ -96,8 +96,3 @@ int		ft_atoi_base(char *str, char *base)
 	}
 	return (result * mult);
 }
-
-int main()
-{
-	printf("%d\n", ft_atoi_base("1010", "01"));
-}

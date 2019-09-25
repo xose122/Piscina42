@@ -27,5 +27,6 @@ void	ft_ptint_str(char *str)
 
 int		main(int argc, char **argv)
 {
+	(void)argc;
 	ft_ptint_str(argv[0]);
 }
