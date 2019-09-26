@@ -42,7 +42,6 @@ char	*ft_strcpy(char *dest, char *src)
 char	*ft_strdup(char *src)
 {
 	int		size;
-	int		i;
 	char	*new;
 
 	size = ft_strlen(src);
@@ -50,4 +49,12 @@ char	*ft_strdup(char *src)
 		return (NULL);
 	ft_strcpy(new, src);
 	return (new);
+}
+
+int main()
+{
+	char *str;
+	str = ft_strdup("Hola mundo");
+	printf("%s\n", str);
+	free(str);
 }

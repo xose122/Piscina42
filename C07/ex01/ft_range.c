@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include <stdlib.h>
+#include <stdio.h>
 
 int		*ft_range(int min, int max)
 {
@@ -30,4 +31,16 @@ int		*ft_range(int min, int max)
 		i++;
 	}
 	return (arr);
+}
+
+int main()
+{
+	int i = 0;
+	int *tab = ft_range(10, 20);
+
+	while(i < 10)
+	{
+		printf("%d, ", tab[i]);
+		i++;
+	}
 }

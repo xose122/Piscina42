@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include <stdlib.h>
+#include <stdio.h>
 
 int		ft_strlen(char *str)
 {
@@ -63,4 +64,14 @@ char	*ft_strjoin(int size, char **strs, char *sep)
 		i++;
 	}
 	return (str_ret);
+}
+
+int main()
+{
+	char **str;
+	str = (char **)malloc(sizeof(char*)*3);
+	str[0] = "Hola";
+	str[1] = "Que";
+	str[2] = "Tal";
+	printf("%s\n", ft_strjoin(3, str, ", "));
 }

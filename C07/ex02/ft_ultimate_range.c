@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include <stdlib.h>
+#include <stdio.h>
 
 int		ft_ultimate_range(int **range, int min, int max)
 {
@@ -34,4 +35,17 @@ int		ft_ultimate_range(int **range, int min, int max)
 	}
 	*range = arr;
 	return (size);
+}
+
+int main()
+{
+	int i = 0;
+	int *tab;
+	ft_ultimate_range(&tab, -10, 2147483647);
+
+	while(i < 2147483647)
+	{
+		printf("%d, ", tab[i]);
+		i++;
+	}
 }

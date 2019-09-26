@@ -56,7 +56,7 @@ int		ft_is_valid(int *reinas, int fila)
 	return (valido);
 }
 
-void	ft_rec_nreinas(int reinas[], int fila, int n, int soluc)
+void	ft_rec_nreinas(int reinas[], int fila, int n)
 {
 	int i;
 
@@ -68,7 +68,7 @@ void	ft_rec_nreinas(int reinas[], int fila, int n, int soluc)
 			reinas[fila] = i;
 			if (ft_is_valid(reinas, fila))
 			{
-				ft_rec_nreinas(reinas, fila + 1, n, soluc);
+				ft_rec_nreinas(reinas, fila + 1, n);
 			}
 			i++;
 		}
@@ -90,5 +90,6 @@ int		ft_ten_queens_puzzle(void)
 		reinas[i] = -1;
 		i++;
 	}
+	ft_rec_nreinas(reinas, 0, 10);
 	return (724);
 }

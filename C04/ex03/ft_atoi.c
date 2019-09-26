@@ -33,7 +33,7 @@ int		ft_atoi(char *str)
 			mult *= -1;
 		i++;
 	}
-	while (str[i] > '0' && str[i] < '9')
+	while (str[i] >= '0' && str[i] <= '9')
 	{
 		result *= 10;
 		result += (str[i] - 48);

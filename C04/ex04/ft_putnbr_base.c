@@ -13,92 +13,64 @@
 #include <unistd.h>
 #include <stdio.h>
 
-int		ft_strlen(char *str)
+void	ft_putchar(char c)
 {
-	int		len;
-	char	c;
-
-	len = 0;
-	c = str[len];
-	while (c != '\0')
-	{
-		len++;
-		c = str[len];
-	}
-	return (len);
+	write(1, &c, sizeof(c));
 }
 
-int		ft_contains(char *str, char coincidence, int n)
+int		ft_valid_base(char *str)
 {
-	int found;
-	int i;
+	int	i;
+	int	j;
 
-	i = n;
-	found = -1;
-	while (str[i] != '\0' && found == -1)
-	{
-		if (str[i] == coincidence)
-		{
-			found = i;
-		}
-		i++;
-	}
-	return (found);
-}
-
-int		ft_valid_base(char *base)
-{
-	int i;
-	int valid;
-
-	valid = 1;
+	if (str[0] == '\0')
+		return (0);
 	i = 0;
-	if (ft_contains(base, '+', 0) != -1 || ft_contains(base, '-', 0) != -1 ||
-	ft_strlen(base) < 2)
+	while (str[i] != '\0')
 	{
-		valid = 0;
-	}
-	while (valid && base[i] != '\0')
-	{
-		if (ft_contains(base, base[i], i + 1) != -1)
+		if (str[i] == '-' || str[i] == '+')
+			return (0);
+		j = i + 1;
+		while (str[j])
 		{
-			valid = 0;
+			if (str[i] == str[j])
+				return (0);
+			j++;
 		}
 		i++;
 	}
-	return (valid);
+	if (i < 2)
+		return (0);
+	return (i);
 }
 
-void	ft_rec_putnbr_base(int nbr, char *base)
+void	ft_write_nbr(int nb, char *str, unsigned int nbase)
 {
-	int size;
+	unsigned int nbr;
 
-	size = ft_strlen(base);
-	if (nbr == -2147483648)
+	if (nb < 0)
 	{
-		ft_rec_putnbr_base(nbr / 10, base);
-		write(1, &(base[8]), 1);
-	}
-	else if (nbr < 0)
-	{
-		write(1, "-", 1);
-		ft_rec_putnbr_base(-nbr, base);
-	}
-	else if (nbr < size)
-	{
-		write(1, &(base[nbr]), 1);
+		ft_putchar('-');
+		nbr = nb * -1;
 	}
 	else
-	{
-		ft_rec_putnbr_base(nbr / size, base);
-		ft_rec_putnbr_base(nbr % size, base);
-	}
+		nbr = nb;
+	if (nbr >= nbase)
+		ft_write_nbr(nbr / nbase, str, nbase);
+	ft_putchar(str[nbr % nbase]);
 }
 
-void	ft_putnbr_base(int nbr, char *base)
+void	ft_putnbr_base(int nb, char *str)
 {
-	if (ft_valid_base(base))
-	{
-		ft_rec_putnbr_base(nbr, base);
-	}
+	unsigned int str_length;
+
+	str_length = ft_valid_base(str);
+	if (str_length == 0)
+		return ;
+	ft_write_nbr(nb, str, str_length);
+}
+
+int main()
+{
+	ft_putnbr_base(10, "01234567");
 }
