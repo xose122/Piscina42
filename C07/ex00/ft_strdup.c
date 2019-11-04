@@ -50,11 +50,3 @@ char	*ft_strdup(char *src)
 	ft_strcpy(new, src);
 	return (new);
 }
-
-int main()
-{
-	char *str;
-	str = ft_strdup("Hola mundo");
-	printf("%s\n", str);
-	free(str);
-}

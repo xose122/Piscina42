@@ -13,6 +13,27 @@
 #include <stdlib.h>
 #include <stdio.h>
 
+char	*ft_strdup(char *src)
+{
+	char	*new;
+	int		i;
+	int		size;
+
+	size = 0;
+	while (src[size])
+		++size;
+	if (!(new = malloc(sizeof(char) * (size + 1))))
+		return (NULL);
+	i = 0;
+	while (src[i])
+	{
+		new[i] = src[i];
+		i++;
+	}
+	new[i] = '\0';
+	return (new);
+}
+
 int		ft_strlen(char *str)
 {
 	int		len;
@@ -48,6 +69,7 @@ char	*ft_strjoin(int size, char **strs, char *sep)
 {
 	int		i;
 	char	*str_ret;
+	char	*aux;
 
 	if (size < 0)
 		return ((char*)malloc(0));
@@ -56,7 +78,10 @@ char	*ft_strjoin(int size, char **strs, char *sep)
 	i = 0;
 	while (i < size)
 	{
-		ft_strcat(str_ret, strs[i]);
+		aux = ft_strdup(strs[i]);
+		if (aux == NULL)
+			return (NULL);
+		ft_strcat(str_ret, aux);
 		if (i < size - 1)
 		{
 			ft_strcat(str_ret, sep);
@@ -64,14 +89,4 @@ char	*ft_strjoin(int size, char **strs, char *sep)
 		i++;
 	}
 	return (str_ret);
-}
-
-int main()
-{
-	char **str;
-	str = (char **)malloc(sizeof(char*)*3);
-	str[0] = "Hola";
-	str[1] = "Que";
-	str[2] = "Tal";
-	printf("%s\n", ft_strjoin(3, str, ", "));
 }
